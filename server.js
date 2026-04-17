@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("API is running successfully 🚀");
+});
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/upload", require("./routes/UploadRoute"));
 app.use("/api/weather", require("./routes/WeatherAPI"));
