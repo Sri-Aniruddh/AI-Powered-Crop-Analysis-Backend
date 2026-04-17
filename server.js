@@ -6,11 +6,23 @@ require("dotenv").config();
 
 const app = express();
 
+app.set("trust proxy", 1);
+
+const corsOptions = {
+  origin: "https://ai-powered-crop-analysis-frontend.vercel.app",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
+
 // CORS
-app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:8080", "http://localhost:3000"],
-    credentials: true
-}));
+//app.use(cors({
+//   origin: ["http://localhost:5173", "http://localhost:8080", "http://localhost:3000"],
+//   credentials: true
+//}));
+
 
 // Middlewares
 app.use(express.json());
